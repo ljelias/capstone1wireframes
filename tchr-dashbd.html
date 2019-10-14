@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FBTrack TchrDashbd</title>
+  <style>
+    header.top {
+      background-color: rgb(235, 235, 235);
+      text-align: center;
+
+      width: 90%;
+      max-width: 500px;
+      margin: 6px auto;
+      padding: 9px;
+    }
+    .addNewStdB,
+    .addNewStdA {
+      border: 1px solid grey;
+      width: 90%;
+      max-width: 500px;
+      margin: 9px auto;
+    }
+    .toggleShowHide {
+      background-color: lightgrey;
+      padding: 0;
+    }
+    .toggleShowHide:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    }
+    h3 {
+      margin: 0;
+      padding: 9px 15px;
+      position: relative;
+    }
+    .arrowpointers {
+      font-size: 2.7rem;
+      line-height: 1.7rem;
+      position: absolute;
+      right: 0;
+    }
+    form {
+      padding: 9px;
+    }
+    .labeler {
+      display: block;
+      margin-bottom: 9px;
+    }
+    label, input, textarea {
+      vertical-align: top;
+    }
+    textarea {
+      min-width: 180px;
+    }
+    .saveStd {
+      float: right;
+    }
+    .rosterItem {
+    border: 1px solid grey;
+    width: 85%;
+    max-width: 480px;
+    margin: 9px auto;
+    padding: 9px;
+    }
+    .rosterItem:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+  </style>
+</head>
+<body>
+  <header class='top'>
+    <h2>My students</h2>
+  </header>
+  <section class='addStudentForm'>
+    <div class='addNewStdA'>
+      <header class='toggleShowHide'>
+        <h3><span id='addingTitle' class='italicspan'>Click to add a new student </span><span class='arrowpointers'> &#9662;</span></h3>
+      </header>   
+    </div>
+    <div class='addNewStdB'>
+        <header class='toggleShowHide'>
+          <h3><span id='addingTitle' class='italicspan'>Add a new student </span><span class='arrowpointers'> &#9652;</span></h3>
+        </header>   
+        <form>
+            <button type='submit' class='saveStd'>Save</button>
+            <label for='newStdFname' class='labeler'>First Name:&nbsp; 
+              <input type='text' id='newStdFname'  name='newStdFname' placeholder='Student first name' required />
+            </label>
+            <label for='newStdLname' class='labeler'>Last Name:&nbsp;
+              <input type='text' id='newStdLname' name='newStdLname' placeholder='Student last name' required />
+            </label>
+            <label for='newStdPhone' class='labeler'>Phone:&nbsp;
+              <input type='text' id='newStdPhone' name='newStdPhone' placeholder='Phone number' />
+            </label>
+            <label for='newStdEmail' class='labeler'>Email:&nbsp;
+              <input type='text' id='newStdEmail' name='newStdEmail' placeholder='Email address' />
+            </label>
+            <label for='newStdInfo' class='labeler'>Other info:&nbsp;
+              <textarea cols='4' maxlength='480' id='newStdInfo' class='vertAlignBottom' name='newStdInfo' placeholder='Misc notes'></textarea>
+            </label>
+        </form>
+    </div>
+  </section>
+  <section class="showStudentList">
+    <div class='rosterItem'><h3>StudentA</h3></div>
+    <div class='rosterItem'><h3>StudentB</h3></div>
+    <div class='rosterItem'><h3>StudentC</h3></div>
+
+  </section>  
+
+  <script type="text/javascript" src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+  <script>
+    let addingStudent = false;
+    
+    function handleShowAddingForm(){
+      if(addingStudent){
+        $('.addNewStdA').hide();
+        $('.addNewStdB').show();
+      } else {
+        $('.addNewStdB').hide();
+        $('.addNewStdA').show();
+      }
+    }
+    function handleAdderClicked(){
+      $('.addNewStdA').on('click', '.toggleShowHide', function(){
+        addingStudent = true;
+        handleShowAddingForm();
+      });
+    }
+    function handleAdderUnclicked(){
+      $('.addNewStdB').on('click', '.toggleShowHide', function(){
+        addingStudent = false;
+        handleShowAddingForm();
+      });
+    }
+    
+    function main(){
+      handleShowAddingForm();
+      handleAdderClicked();
+      handleAdderUnclicked();  
+    }
+    
+    $(main);
+    </script>
+  </body>
+</html>
+

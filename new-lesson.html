@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FBTrack NewLesson</title>
+  <style>
+    header.top {
+      background-color: rgb(235, 235, 235);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      margin: 6px auto;
+      padding: 9px;
+    }
+    .sessionNotes {
+      border: 1px solid grey;
+      width: 85%;
+      max-width: 480px;
+      margin: 15px auto;
+      padding: 15px;
+    }
+    .addNewTopic {
+      float: right;
+      border-radius: 15px;
+    }
+    .newTopic {
+      background-color:rgb(235, 235, 235);
+      width: 85%;
+      max-width: 440px;
+      margin: 15px auto;
+      padding: 6px;
+    }
+    .notesField {
+      display: block;
+    }
+    .saveNewNotes {
+      float: right;
+    }
+  </style>
+
+</head>
+<body>
+  <header class='top'>
+    <h2>New Lesson (write the notes)</h2>
+  </header>
+      
+  <section class='lessonNotesForm'>
+    <form class='sessionNotes'>
+        <button class='addNewTopic'>+ New Topic</button>
+
+        <label for='stdName' class='notesField'>Student:&nbsp;
+          <select id='stdName'>
+            <option>StudentA</option>
+            <option>StudentB</option>
+            <option>StudentC</option>
+            <option>StudentD</option>
+          </select>
+        </label>
+        <label for='sessionDate' class='notesField'>Date:&nbsp;
+          <input type='date' id='sessionDate' name='date' />
+        </label>
+
+      <div class='newTopic'>
+          <input type='text'  class='notesField' placeholder='topic' />
+          <textarea  class='notesField'></textarea>    
+      </div>
+      <div class='newTopic'>
+          <input type='text'  class='notesField' placeholder='topic' />
+          <textarea class='notesField'></textarea>    
+      </div>
+
+      <button type='submit' class='saveNewNotes'>Save Lesson</button>      
+
+      <label for='nextDate' class='notesField'>Next lesson:&nbsp;
+        <input type='text' id='nextDate' />
+      </label>
+      <label for='nextTopics' class='notesField'>Topics:&nbsp;
+        <input type='text' id='nextTopics' />
+      </label>  
+    </form>
+  </section>
+
+  <script type="text/javascript" src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+  </body>
+</html>
+

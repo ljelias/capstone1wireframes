@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FBTrack ViewLesson</title>
+  <style>
+    header.lessonTitle {
+      background-color: rgb(235, 235, 235);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      margin: 6px auto;
+      padding: 6px;
+    }
+    .lessonTopicTitleA,
+    .lessonTopicTitleB,
+    .mockLessonTopicTitleA {
+      border: 1px solid grey;
+      width: 85%;
+      max-width: 480px;
+      margin: 9px auto;
+    }
+    h3 {      
+      margin: 0;
+      padding: 9px 15px;
+      position: relative;
+    }
+    .arrowpointers {
+      font-size: 2.7rem;
+      line-height: 1.7rem;
+      position: absolute;
+      right: 0;
+    }
+    .toggleShowHide,
+    .mockShowHide {
+      background-color: lightgrey;
+      margin: 0;
+      padding: 0;
+    }
+    .toggleShowHide:hover,
+    .mockShowHide:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    }
+    .topicDetails {
+      padding: 6px 12px;
+    }
+    h4 {
+      font-size: 1.2rem;
+      margin: 0;
+      padding: 9px 6px;
+    }
+
+    .nextSessionDetails {
+      text-align: left;
+      border: 1px solid grey;
+      width: 85%;
+      max-width: 480px;
+      margin: 6px auto;
+      padding: 3px 9px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header class='lessonTitle'>
+    <h2>Lesson Summary</h2>
+    <p>Student: ${student.name}</p>
+    <p>Date:  ${lesson.date}</p>
+    <button>Back</button>
+  </header>
+    
+  <section>
+    <div class='lessonTopicTitleA'>
+      <header class='toggleShowHide'>
+        <h3><span id='lessonTitle' class='italicspan'>View Topic: ${lesson.topicTitleA} </span><span class='arrowpointers'> &#9662;</span></h3>
+      </header>   
+    </div>
+    <div class='lessonTopicTitleB'>
+      <header class='toggleShowHide'>
+        <h3><span id='lessonTitle' class='italicspan'>Topic: ${lesson.topicTitleA} </span><span class='arrowpointers'> &#9652;</span></h3>
+      </header> 
+      <div class='topicDetails'>
+        <p>A bunch of stuff the teacher wrote, etc, etc, etc...</p>
+        <p>And more info, paragraph and stuff</p>
+      </div>
+    </div> 
+    <div class='mockLessonTopicTitleA'>
+      <header class='mockShowHide'>
+        <h3><span id='lessonTitle' class='italicspan'>View Topic: ${lesson.topicTitleB} </span><span class='arrowpointers'> &#9662;</span></h3>
+      </header>   
+    </div>
+    <div class='mockLessonTopicTitleA'>
+      <header class='mockShowHide'>
+        <h3><span id='lessonTitle' class='italicspan'>View Topic: ${lesson.topicTitleC} </span><span class='arrowpointers'> &#9662;</span></h3>
+      </header>   
+    </div>
+      
+  </section>  
+
+    <section class='nextSessionInfo'>
+        <div class='nextSessionDetails'>
+          <h4>Next Session:</h4>
+          <p>Date: March 15, 2020</p>
+          <p>Topics: finish article / review short vowels</p>
+        </div>
+    </section>
+
+  <script type="text/javascript" src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+  <script>
+    let showingTopicDetails = false;
+    
+    function handleShowTopicDetails(){
+      if(showingTopicDetails){
+        $('.lessonTopicTitleA').hide();
+        $('.lessonTopicTitleB').show();
+      } else {
+        $('.lessonTopicTitleB').hide();
+        $('.lessonTopicTitleA').show();
+      }
+    }
+    function handleHeaderClicked(){
+      $('.lessonTopicTitleA').on('click', '.toggleShowHide', function(){
+        showingTopicDetails = true;
+        handleShowTopicDetails();
+      });
+    }
+    function handleHeaderUnclicked(){
+      $('.lessonTopicTitleB').on('click', '.toggleShowHide', function(){
+        showingTopicDetails = false;
+        handleShowTopicDetails();
+      });
+    }
+    function main(){
+      handleShowTopicDetails();
+      handleHeaderClicked();
+      handleHeaderUnclicked();  
+    }
+    
+    $(main);
+    </script>
+</body>
+</html>
+
